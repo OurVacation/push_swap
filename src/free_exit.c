@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:29:32 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 12:51:01 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:11:44 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	free_exit(t_deque *ab[2]);
 void	ft_free_list(t_deque *deque)
 {
 	if (!deque)
+	{
+		ft_printf("ft_free_list()'s input is NULL\n");
 		return ;
+	}
 	while(deque->head)
 		pop_front(deque);
-	free(deque);
 }
 
 void	ft_free_split(char **str)

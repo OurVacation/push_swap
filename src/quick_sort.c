@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:34:05 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 12:11:46 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:14:41 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ int	*sorted_arr_gen(t_deque *a)
 		return (NULL);
 	i = 0;
 	cur = a->head;
-	while ((i++ < a->size) && cur)
+	while ((i < a->size) && cur)
 	{
 		arr[i] = cur->data;
 		cur = cur->next;
+		i++;
 	}
 	quick_sort(arr, 0, a->size - 1);
 	return (arr);
@@ -92,7 +93,7 @@ void	nomalize_stack(t_deque *a)
 		ft_printf("sorted_arr_gen() failed");
 		return ;
 	}
-	while (i++ < a->size)
+	while (i < a->size)
 	{
 		cur = a->head;
 		while (cur)
@@ -101,6 +102,7 @@ void	nomalize_stack(t_deque *a)
 				cur->data = i;
 			cur = cur->next;
 		}
+		i++;
 	}
 	free(arr);
 }
