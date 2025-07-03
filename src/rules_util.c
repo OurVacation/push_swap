@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:56:43 by taewonki          #+#    #+#             */
-/*   Updated: 2025/06/30 14:22:44 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:20:04 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	reverse_rotate(t_deque *ab)
 	}
 }
 
-void	rrr(t_deque **stack)
+void	rrr(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;

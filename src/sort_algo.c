@@ -6,30 +6,18 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:44:08 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/01 12:18:04 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:00:42 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		sort(t_deque **ab, int **arr);
 void		three_sort(t_deque **ab);
-void		two_to_five_sort(t_deque *ab);
+void		two_to_five_sort(t_deque **ab);
 void		min_to_top(t_deque **ab, int min);
 int			find_min(t_deque *a);
 
-
-void	sort(t_deque **ab, int **arr)
-{
-	if (ab[0]->size >= 2 && ab[0]->size <= 5)
-		two_to_five_sort(ab);
-	else
-	{
-
-	}
-}
-
-void	two_to_five_sort(t_deque *ab)
+void	two_to_five_sort(t_deque **ab)
 {
 	int	min;
 
@@ -47,7 +35,7 @@ void	two_to_five_sort(t_deque *ab)
 	{
 		while (ab[0]->size > 3)
 		{
-			min = find_min(&ab[0]);
+			min = find_min(ab[0]);
 			min_to_top(ab, min);
 			pb(ab);
 		}

@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:18:47 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/02 11:06:28 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:18:35 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ void	init_stack_a(t_deque *a, int ac, char **av)
 			i++;
 		}
 	}
+	ft_printf("---------------after push a-------------------\n");
+	print_stack_state(a, 0);
 	nomalize_stack(a);
+	ft_printf("---------------after nomalize -------------------\n");
+	print_stack_state(a, 0);
 }
 
 static void	stack_push(t_deque *a, char *str, char **to_free)
@@ -68,8 +72,13 @@ int is_sorted(t_deque *a)
 {
 	t_node	*node;
 
+	if (!a || !a->head)
+	{
+		ft_printf("is_sorted() fail\n");
+		return (-1);
+	}
 	node = a->head;
-	while (node && node->next)
+	while (node->next)
 	{
 		if (node->data > node->next->data)
 			return (0);

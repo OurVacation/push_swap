@@ -6,33 +6,38 @@
 #    By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/01 12:07:49 by taewonki          #+#    #+#              #
-#    Updated: 2025/07/01 12:17:37 by taewonki         ###   ########.fr        #
+#    Updated: 2025/07/03 12:28:31 by taewonki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Iinclude
+CFLAGS = -g -Wall -Werror -Wextra -Iinclude -Ift_printf
 
 SRCDIR = src
 INCDIR = include
 FT_PRINTF_DIR = ft_printf
+FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
 
 NAME = push_swap
 SRC = $(SRCDIR)/check.c $(SRCDIR)/free_exit.c $(SRCDIR)/ft_split.c \
-		$(SRCDIR)/init.c $(SRCDIR)/list_func.c $(SRCDIR)/push_swap.c \
+		$(SRCDIR)/greedy.c $(SRCDIR)/init.c $(SRCDIR)/list_func.c \
+		$(SRCDIR)/push_swap.c $(SRCDIR)/quick_sort.c \
 		$(SRCDIR)/rules.c $(SRCDIR)/rules_util.c $(SRCDIR)/rules1.c \
-		$(SRCDIR)/sort_algo.c $(SRCDIR)/utils.c
+		$(SRCDIR)/sort_algo.c $(SRCDIR)/sort_stack.c $(SRCDIR)/utils.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(FT_PRINTF_LIB) $(OBJ)
 	$(MAKE) -C $(FT_PRINTF_DIR)
-	$(CC) $(CFLAGS) $(OBJ) -L$(FT_PRINTF_DIR) -lprintf -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF_LIB) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(FT_PRINTF_LIB):
+	$(MAKE) -C $(FT_PRINTF_DIR)
 
 clean:
 	rm -f $(OBJ)

@@ -6,13 +6,18 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:34:05 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/02 12:07:30 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:11:46 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+static void	swap_arr(int *a, int *b);
+static int	partition(int *arr, int low, int high);
+static void	quick_sort(int *arr, int low, int high);
+int			*sorted_arr_gen(t_deque *a);
+void		nomalize_stack(t_deque *a);
 
-static void	swap(int *a, int *b)
+static void	swap_arr(int *a, int *b)
 {
 	int	temp;
 
@@ -21,7 +26,7 @@ static void	swap(int *a, int *b)
 	*b = temp;
 }
 
-static int	partition(int **arr, int low, int high)
+static int	partition(int *arr, int low, int high)
 {
 	int pivot;
 	int	i;
@@ -32,27 +37,29 @@ static int	partition(int **arr, int low, int high)
 	j = high;
 	while (i < j)
 	{
-		while (arr[i] <= p && i <= high - 1)
+		while (arr[i] <= pivot && i <= high - 1)
 			i++;
-		while (arr[j] > p && j >= low + 1)
+		while (arr[j] > pivot && j >= low + 1)
 			j--;
 		if (i < j)
-			swap(&arr[i], &arr[j])
+			swap_arr(&arr[i], &arr[j]);
 	}
-	swap(&arr[low], &arr[j]);
+	swap_arr(&arr[low], &arr[j]);
 	return (j);
 }
 
-static void	quick_sort(int **arr, int low, int high)
+static void	quick_sort(int *arr, int low, int high)
 {
 	int	pivot;
 
+	if (low > high)
+		return ;
 	pivot = partition(arr, low, high);
 	quick_sort(arr, low, pivot - 1);
-	quick_sort(arr, pi + 1, high);
+	quick_sort(arr, pivot + 1, high);
 }
 
-void	*sorted_arr_gen(t_deque *a)
+int	*sorted_arr_gen(t_deque *a)
 {
 	t_node	*cur;
 	int		*arr;

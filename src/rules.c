@@ -6,19 +6,19 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:53:41 by taewonki          #+#    #+#             */
-/*   Updated: 2025/06/30 12:14:10 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:20:32 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		sa(t_deque **stack);
-void		sb(t_deque **stack);
-void		ss(t_deque **stack);
-void		pa(t_deque **stack);
-void		pb(t_deque **stack);
+void		sa(t_deque *stack[2]);
+void		sb(t_deque *stack[2]);
+void		ss(t_deque *stack[2]);
+void		pa(t_deque *stack[2]);
+void		pb(t_deque *stack[2]);
 
-void	sa(t_deque **stack)
+void	sa(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;
@@ -26,7 +26,7 @@ void	sa(t_deque **stack)
 	ft_printf("sa\n");
 }
 
-void	sb(t_deque **stack)
+void	sb(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;
@@ -34,7 +34,7 @@ void	sb(t_deque **stack)
 	ft_printf("sb\n");
 }
 
-void	ss(t_deque **stack)
+void	ss(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;
@@ -43,7 +43,7 @@ void	ss(t_deque **stack)
 	ft_printf("ss\n");
 }
 
-void	pa(t_deque **stack)
+void	pa(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;
@@ -51,7 +51,7 @@ void	pa(t_deque **stack)
 	ft_printf("pa\n");
 }
 
-void	pb(t_deque **stack)
+void	pb(t_deque *stack[2])
 {
 	if (!stack || !*stack)
 		return ;

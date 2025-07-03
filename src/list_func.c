@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:00:15 by taewonki          #+#    #+#             */
-/*   Updated: 2025/06/30 14:21:00 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:59:15 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_node	*create_node(int data)
 	if (!newnode)
 		return (NULL);
 	newnode->data = data;
+	newnode->cost_a = 0;
+	newnode->cost_b = 0;
 	newnode->prev = NULL;
 	newnode->next = NULL;
 	return (newnode);
