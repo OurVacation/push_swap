@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:27:27 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/02 12:50:53 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 01:03:29 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_atoll(const char *str, int *num)
 	{
 		result = result * 10 + (*str - '0');
 		str++;
-		if (sign *result < INT_MIN || sign * result > INT_MAX)
+		if (sign * result < INT_MIN || sign * result > INT_MAX)
 			return (0);
 	}
 	if (*str != '\0')

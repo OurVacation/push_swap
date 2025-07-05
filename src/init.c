@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:18:47 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:18:35 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 05:30:03 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	init_stack_a(t_deque *a, int ac, char **av)
 		return ;
 	if (ac == 2)
 	{
-		i = 0;
+		i = -1;
 		input = ft_split(av[1], ' ');
 		if (!input)
 			return ;
-		while (input[i++])
+		while (input[++i])
 			stack_push(a, input[i], input);
 		ft_free_split(input);
 	}
@@ -42,10 +42,8 @@ void	init_stack_a(t_deque *a, int ac, char **av)
 			i++;
 		}
 	}
-	ft_printf("---------------after push a-------------------\n");
-	print_stack_state(a, 0);
 	nomalize_stack(a);
-	ft_printf("---------------after nomalize -------------------\n");
+	ft_printf("-----------------nomalize_stack()-----------------\n");
 	print_stack_state(a, 0);
 }
 
@@ -84,5 +82,6 @@ int is_sorted(t_deque *a)
 			return (0);
 		node = node->next;
 	}
+	ft_printf("is_sorted() success\n");
 	return (1);
 }

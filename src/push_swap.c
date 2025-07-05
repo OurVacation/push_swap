@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:26:09 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:50:37 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 05:30:48 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	main(int argc, char **argv)
 	stack[1] = &b;
 	init_stack_a(stack[0], argc, argv);
 	if (is_sorted(stack[0]))
-		return (0);
+		free_exit(stack);
 	sort_stack(stack);
+	ft_printf("-----------------sort_stack()-----------------\n");
+	print_stack_state(stack[0], 0);
+	print_stack_state(stack[1], 1);
 	ft_free_list(stack[0]);
 	ft_free_list(stack[1]);
 	return (0);

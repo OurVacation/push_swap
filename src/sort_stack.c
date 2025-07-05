@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:07:28 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:51:37 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 05:39:23 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	sort_stack(t_deque *ab[2])
 		return ;
 	}
 	divide_chunk(ab, 0, ab[0]->size);
+	print_stack_state(ab[0], 0);
+	print_stack_state(ab[1], 1);
 	while (!is_deque_empty(ab[1]))
 	{
 		calculate_costs(ab);
@@ -49,6 +51,11 @@ void	sort_stack(t_deque *ab[2])
 
 void	divide_chunk(t_deque **ab, int start, int total_size)
 {
+	static int	recursion_depth = 0;
+	recursion_depth++;
+	ft_printf("divide_chunk() : recursion_depth = %d\n", recursion_depth);
+	ft_printf("divide_chunk() : start = %d, total_size = %d\n", start, total_size);
+	ft_printf("divide_chunk() : ab[0]->size = %d\n", ab[0]->size);
 	int	pivot_sm;
 	int	pivot_big;
 	int	cnt;
@@ -56,13 +63,18 @@ void	divide_chunk(t_deque **ab, int start, int total_size)
 	pivot_sm = start + (total_size / 3);
 	pivot_big = start + ((total_size * 2) / 3);
 	cnt = ab[0]->size;
+	if (is_deque_empty(ab[0]))
+		return ;
 	if (ab[0]->size <= 5)
 	{
 		two_to_five_sort(ab);
 		return ;
 	}
-	while (cnt--)
+	int i = 0;
+	while (ab[0]->size > 0 && cnt--)
 	{
+		ft_printf("divide_chunk() : %d\n",i);
+		ft_printf("pivot_sm : %d, pivot_big : %d\n", pivot_sm, pivot_big);
 		if (ab[0]->head->data <= pivot_sm)
 		{
 			pb(ab);
@@ -72,11 +84,9 @@ void	divide_chunk(t_deque **ab, int start, int total_size)
 			pb(ab);
 		else
 			ra(ab);
+		i++;
 	}
-	divide_chunk(ab, pivot_big + 1, total_size - (pivot_big + 1));
-	ft_printf("------------------------after divide_chunk--------------------------\n");
-	print_stack_state(ab[0], 0);
-	print_stack_state(ab[1], 1);
+	divide_chunk(ab, pivot_big + 1, ab[0]->size);
 }
 
 int	find_first_node(t_deque *a)

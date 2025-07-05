@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:56:43 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:20:04 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 05:26:47 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	rotate(t_deque *ab)
 {
 	t_node	*first;
 
-	if (!ab)
+	if (!ab || !ab->head)
 		return ;
 	if (ab->size == 1 || is_deque_empty(ab))
 		return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   greedy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:26:57 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:19:41 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 02:05:38 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ static int	find_insert_pos(t_deque *a, int value)
 	t_node	*cur_a;
 	int		pos;
 
+	if (is_deque_empty(a))
+	{
+		ft_printf("find_insert_pos() fail\n");
+		return (0);
+	}
 	pos = 0;
 	cur_a = a->head;
 	while (cur_a)
@@ -53,7 +58,7 @@ static int	find_insert_pos(t_deque *a, int value)
 		pos++;
 		cur_a = cur_a->next;
 	}
-	return (0);
+	return (a->size);
 }
 
 void	calculate_costs(t_deque *ab[2])

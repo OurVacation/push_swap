@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:00:15 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 09:59:15 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 01:18:32 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	pop_tail(t_deque *dq)
 	if (dq->tail)
 		dq->tail->next = NULL;
 	else
-		dq->tail = NULL;
+		dq->head = NULL;
 	dq->size--;
 	free(temp);
 	return (result);

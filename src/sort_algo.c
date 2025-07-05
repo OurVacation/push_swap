@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:44:08 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 14:21:37 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/04 05:49:23 by gimtaewon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int			find_min(t_deque *a);
 
 void	two_to_five_sort(t_deque *ab[2])
 {
-	int	min;
-
+	if (ab[0]->size <= 1 || is_deque_empty(ab[0]))
+		return ;
 	if (ab[0]->size == 2)
 	{
 		sa(ab);
@@ -35,8 +35,7 @@ void	two_to_five_sort(t_deque *ab[2])
 	{
 		while (ab[0]->size > 3)
 		{
-			min = find_min(ab[0]);
-			min_to_top(ab, min);
+			min_to_top(ab, find_min(ab[0]));
 			pb(ab);
 		}
 		three_sort(ab);
@@ -92,10 +91,7 @@ void	three_sort(t_deque *ab[2])
 	else if (third < first && first < second)
 		ra(ab);
 	else if (third < second && second < first)
-	{
-		sa(ab);
-		rra(ab);
-	}
+		ra(ab);
 }
 
 int	find_min(t_deque *a)
@@ -103,7 +99,7 @@ int	find_min(t_deque *a)
 	t_node	*cur;
 	int		min;
 
-	if (!a)
+	if (!a || is_deque_empty(a))
 	{
 		ft_printf("find_min() error");
 		return (-1);
