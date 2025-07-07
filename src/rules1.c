@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 16:23:49 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:20:51 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:53:33 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	rb(t_deque *stack[2])
 
 void	rr(t_deque *stack[2])
 {
-	if(!stack || !*stack)
+	if (!stack || !*stack)
 		return ;
 	rotate(stack[0]);
 	rotate(stack[1]);

@@ -6,11 +6,12 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:34:05 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 14:14:41 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:53:04 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 static void	swap_arr(int *a, int *b);
 static int	partition(int *arr, int low, int high);
 static void	quick_sort(int *arr, int low, int high);
@@ -28,7 +29,7 @@ static void	swap_arr(int *a, int *b)
 
 static int	partition(int *arr, int low, int high)
 {
-	int pivot;
+	int	pivot;
 	int	i;
 	int	j;
 
@@ -85,24 +86,26 @@ void	nomalize_stack(t_deque *a)
 	t_node	*cur;
 	int		*arr;
 	int		i;
+	int		temp;
 
-	i = 0;
 	arr = sorted_arr_gen(a);
 	if (!arr)
-	{
-		ft_printf("sorted_arr_gen() failed");
 		return ;
-	}
-	while (i < a->size)
+	cur = a->head;
+	while (cur)
 	{
-		cur = a->head;
-		while (cur)
+		temp = cur->data;
+		i = 0;
+		while (i < a->size)
 		{
-			if (arr[i] == cur->data)
+			if (arr[i] == temp)
+			{
 				cur->data = i;
-			cur = cur->next;
+				break ;
+			}
+			i++;
 		}
-		i++;
+		cur = cur->next;
 	}
 	free(arr);
 }

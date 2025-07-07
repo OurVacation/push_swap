@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:44:08 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/04 05:49:23 by gimtaewon        ###   ########.fr       */
+/*   Updated: 2025/07/07 12:53:57 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			find_min(t_deque *a);
 
 void	two_to_five_sort(t_deque *ab[2])
 {
-	if (ab[0]->size <= 1 || is_deque_empty(ab[0]))
+	if (ab[0]->size < 2 || is_deque_empty(ab[0]))
 		return ;
 	if (ab[0]->size == 2)
 	{
@@ -44,7 +44,7 @@ void	two_to_five_sort(t_deque *ab[2])
 	}
 }
 
-void min_to_top(t_deque *ab[2], int min)
+void	min_to_top(t_deque *ab[2], int min)
 {
 	t_node	*temp;
 	int		cnt;
@@ -54,7 +54,7 @@ void min_to_top(t_deque *ab[2], int min)
 	while (temp)
 	{
 		if (temp->data == min)
-			break;
+			break ;
 		temp = temp->next;
 		cnt++;
 	}
@@ -87,9 +87,12 @@ void	three_sort(t_deque *ab[2])
 	else if (second < first && first < third)
 		sa(ab);
 	else if (second < third && third < first)
-		rra(ab);
-	else if (third < first && first < second)
+	{
 		ra(ab);
+		sa(ab);
+	}
+	else if (third < first && first < second)
+		rra(ab);
 	else if (third < second && second < first)
 		ra(ab);
 }

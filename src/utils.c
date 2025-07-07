@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:44:45 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 12:02:57 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:55:47 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 void	print_stack_state(t_deque *a, int i)
 {
+	t_node	*cur;
+
 	if (!a)
 		return ;
-	t_node	*cur = a->head;
+	cur = a->head;
 	if (i == 0)
 		ft_printf("stack a : ");
 	else
@@ -42,6 +44,7 @@ int	ft_abs(int i)
 	else
 		return (i);
 }
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	count;
@@ -51,6 +54,7 @@ size_t	ft_strlen(const char *str)
 		count++;
 	return (count);
 }
+
 char	*ft_strchr(const char *str, int c)
 {
 	unsigned char	search;

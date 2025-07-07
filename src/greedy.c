@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   greedy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:26:57 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/04 02:05:38 by gimtaewon        ###   ########.fr       */
+/*   Updated: 2025/07/07 13:31:17 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		find_insert_pos(t_deque *a, int value);
+static int		find_insert_pos(t_deque *a, int val);
 static t_node	*find_min_cost_node(t_deque *ab[2]);
 static void		setting_min_node_pos(t_deque *ab[2], t_node *min_node);
 void			calculate_costs(t_deque *ab[2]);
@@ -39,28 +39,6 @@ void	choose_move(t_deque *ab[2])
 	pa(ab);
 }
 
-static int	find_insert_pos(t_deque *a, int value)
-{
-	t_node	*cur_a;
-	int		pos;
-
-	if (is_deque_empty(a))
-	{
-		ft_printf("find_insert_pos() fail\n");
-		return (0);
-	}
-	pos = 0;
-	cur_a = a->head;
-	while (cur_a)
-	{
-		if (cur_a->data > value)
-			return (pos);
-		pos++;
-		cur_a = cur_a->next;
-	}
-	return (a->size);
-}
-
 void	calculate_costs(t_deque *ab[2])
 {
 	t_node	*cur_b;
@@ -75,20 +53,20 @@ void	calculate_costs(t_deque *ab[2])
 	while (cur_b)
 	{
 		pos_ab[0] = find_insert_pos(ab[0], cur_b->data);
-		if (pos_ab[1] <= size_b / 2)
-			cur_b->cost_b = pos_ab[1];
-		else
-			cur_b->cost_b = -(size_b - pos_ab[1]);
 		if (pos_ab[0] <= size_a / 2)
 			cur_b->cost_a = pos_ab[0];
 		else
 			cur_b->cost_a = -(size_a - pos_ab[0]);
+		if (pos_ab[1] <= size_b / 2)
+			cur_b->cost_b = pos_ab[1];
+		else
+			cur_b->cost_b = -(size_b - pos_ab[1]);
 		pos_ab[1]++;
 		cur_b = cur_b->next;
 	}
 }
 
-t_node *find_min_cost_node(t_deque *ab[2])
+t_node	*find_min_cost_node(t_deque *ab[2])
 {
 	t_node	*cur;
 	t_node	*min_node;
@@ -133,4 +111,39 @@ static void	setting_min_node_pos(t_deque *ab[2], t_node *min_node)
 		rrb(ab);
 		min_node->cost_b++;
 	}
+}
+
+static int	find_insert_pos(t_deque *a, int val)
+{
+	t_node	*cur;
+	t_node	*next_node;
+	int		min_max[2];
+	int		pos;
+
+	pos = 0;
+	cur = a->head;
+	find_min_max(a->head, min_max);
+	while (pos < a->size)
+	{
+		next_node = cur->next;
+		if (!next_node)
+			next_node = a->head;
+		if (cur->data < val && val < next_node->data)
+			return (pos + 1);
+		if ((val > min_max[1] || val < min_max[0])
+			&& cur->data == min_max[1] && next_node->data == min_max[0])
+			return (pos + 1);
+		pos++;
+		cur = cur->next;
+	}
+	pos = 0;
+	cur = a->head;
+	while (cur)
+	{
+		if (cur->data == min_max[0])
+			return (pos);
+		pos++;
+		cur = cur->next;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/01 12:07:49 by taewonki          #+#    #+#              #
-#    Updated: 2025/07/03 12:28:31 by taewonki         ###   ########.fr        #
+#    Updated: 2025/07/07 13:31:59 by taewonki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC = $(SRCDIR)/check.c $(SRCDIR)/free_exit.c $(SRCDIR)/ft_split.c \
 		$(SRCDIR)/greedy.c $(SRCDIR)/init.c $(SRCDIR)/list_func.c \
 		$(SRCDIR)/push_swap.c $(SRCDIR)/quick_sort.c \
 		$(SRCDIR)/rules.c $(SRCDIR)/rules_util.c $(SRCDIR)/rules1.c \
-		$(SRCDIR)/sort_algo.c $(SRCDIR)/sort_stack.c $(SRCDIR)/utils.c
+		$(SRCDIR)/sort_algo.c $(SRCDIR)/sort_stack.c $(SRCDIR)/utils.c \
+		$(SRCDIR)/greedy1.c
 
 OBJ = $(SRC:.c=.o)
 

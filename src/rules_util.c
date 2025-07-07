@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimtaewon <gimtaewon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:56:43 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/04 05:26:47 by gimtaewon        ###   ########.fr       */
+/*   Updated: 2025/07/05 17:25:36 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_deque *ab);
 void	push(t_deque *push, t_deque *pop);
 void	rotate(t_deque *ab);
 void	reverse_rotate(t_deque *ab);
-void	rrr(t_deque **stack);
+void	rrr(t_deque *stack[2]);
 
 void	swap(t_deque *ab)
 {

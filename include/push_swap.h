@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:48:02 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/03 13:51:09 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 13:25:55 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ char	**ft_split(char const *s, char c);
 //greedy.c
 void	calculate_costs(t_deque *ab[2]);
 void	choose_move(t_deque *ab[2]);
+
+//greedy1.c
+void	find_min_max(t_node *a, int *min_max);
 
 //init.c
 void	init_stack_a(t_deque *a, int ac, char **av);
