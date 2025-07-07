@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:44:08 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 12:53:57 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 13:59:21 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,29 @@ int			find_min(t_deque *a);
 
 void	two_to_five_sort(t_deque *ab[2])
 {
+	int	pb_cnt;
+
 	if (ab[0]->size < 2 || is_deque_empty(ab[0]))
 		return ;
 	if (ab[0]->size == 2)
-	{
 		sa(ab);
+	if (ab[0]->size == 2)
 		return ;
-	}
 	if (ab[0]->size == 3)
-	{
 		three_sort(ab);
+	if (ab[0]->size == 3)
 		return ;
-	}
 	if (ab[0]->size <= 5)
 	{
+		pb_cnt = 0;
 		while (ab[0]->size > 3)
 		{
 			min_to_top(ab, find_min(ab[0]));
+			pb_cnt++;
 			pb(ab);
 		}
 		three_sort(ab);
-		while (ab[1]->size > 0)
+		while (pb_cnt--)
 			pa(ab);
 	}
 }

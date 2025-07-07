@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:07:28 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:38:32 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:24:23 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,13 @@ void	sort_stack(t_deque *ab[2])
 		two_to_five_sort(ab);
 		return ;
 	}
-	ft_printf("----------start divide chunk()--------------\n");
 	divide_chunk(ab, 0, ab[0]->size);
-	ft_printf("----------after divide chunk()--------------\n");
-	print_stack_state(ab[0],0);
-	print_stack_state(ab[1],1);
-	ft_printf("----------start greedy--------------\n");
 	while (ab[1]->size)
 	{
 		calculate_costs(ab);
 		choose_move(ab);
 	}
 	first = find_first_node(ab[0]);
-	ft_printf("----------start rotate stack a--------------\n");
 	while (ab[0]->head->data != 0)
 	{
 		if (first < ab[0]->size / 2)
@@ -58,8 +52,6 @@ void	divide_chunk(t_deque **ab, int start, int total_size)
 	pivot[0] = start + (total_size / 3);
 	pivot[1] = start + ((total_size * 2) / 3);
 	cnt = ab[0]->size;
-	if (is_deque_empty(ab[0]))
-		return ;
 	if (ab[0]->size <= 5)
 	{
 		two_to_five_sort(ab);

@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 13:23:48 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:25:08 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:55:52 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	find_min_max(t_node *a, int *min_max)
 {
 	if (!a || !min_max)
 	{
-		ft_printf("find_min_max in find_insert_pos is crash\n");
+		ft_printf("find_min_max() get nullptr\n");
 		return ;
 	}
 	min_max[0] = a->data;
@@ -31,4 +31,21 @@ void	find_min_max(t_node *a, int *min_max)
 			min_max[1] = a->data;
 		a = a->next;
 	}
+}
+
+int	find_min_val_node_pos(t_deque *a, int min)
+{
+	int		pos;
+	t_node	*cur;
+
+	pos = 0;
+	cur = a->head;
+	while (cur)
+	{
+		if (cur->data == min)
+			return (pos);
+		pos++;
+		cur = cur->next;
+	}
+	return (0);
 }

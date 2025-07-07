@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:48:02 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:25:55 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:55:08 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	choose_move(t_deque *ab[2]);
 
 //greedy1.c
 void	find_min_max(t_node *a, int *min_max);
+int		find_min_val_node_pos(t_deque *a, int min);
 
 //init.c
 void	init_stack_a(t_deque *a, int ac, char **av);

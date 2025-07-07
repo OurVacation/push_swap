@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:26:57 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:31:17 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:55:11 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,5 @@ static int	find_insert_pos(t_deque *a, int val)
 		pos++;
 		cur = cur->next;
 	}
-	pos = 0;
-	cur = a->head;
-	while (cur)
-	{
-		if (cur->data == min_max[0])
-			return (pos);
-		pos++;
-		cur = cur->next;
-	}
-	return (0);
+	return (find_min_val_node_pos(a, min_max[0]));
 }

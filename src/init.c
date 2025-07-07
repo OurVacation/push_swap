@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:18:47 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:33:30 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:19:08 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,7 @@ void	init_stack_a(t_deque *a, int ac, char **av)
 			i++;
 		}
 	}
-	ft_printf("----------after init stack a-------------\n");
-	print_stack_state(a, 0);
-	ft_printf("----------start nomalize stack a-------------\n");
-	print_stack_state(a, 0);
 	nomalize_stack(a);
-	ft_printf("----------after nomalize stack a-------------\n");
-	print_stack_state(a, 0);
 }
 
 static void	stack_push(t_deque *a, char *str, char **to_free)
