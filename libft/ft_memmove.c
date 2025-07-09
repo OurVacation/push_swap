@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 13:44:45 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/08 15:41:35 by taewonki         ###   ########.fr       */
+/*   Created: 2025/04/03 10:44:33 by taewonki          #+#    #+#             */
+/*   Updated: 2025/04/17 11:22:51 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void	print_stack_state(t_deque *a, int i);
-int		ft_abs(int i);
-
-void	print_stack_state(t_deque *a, int i)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_node	*cur;
+	unsigned char	*dest_cp;
+	unsigned char	*src_cp;
 
-	if (!a)
-		return ;
-	cur = a->head;
-	if (i == 0)
-		ft_printf("stack a : ");
-	else
-		ft_printf("stack b : ");
-	while (cur)
+	if (n == 0 || dest == src)
+		return (dest);
+	dest_cp = (unsigned char *)dest;
+	src_cp = (unsigned char *)src;
+	if (dest < src)
 	{
-		ft_printf("%d ", cur->data);
-		cur = cur->next;
+		while (n--)
+			*dest_cp++ = *src_cp++;
 	}
-	ft_printf("\n");
-}
-
-int	ft_abs(int i)
-{
-	if (i < 0)
-		return (-i);
 	else
-		return (i);
+	{
+		dest_cp += n;
+		src_cp += n;
+		while (n--)
+			*--dest_cp = *--src_cp;
+	}
+	return (dest);
 }

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 13:46:10 by taewonki          #+#    #+#             */
-/*   Updated: 2025/06/30 13:48:11 by taewonki         ###   ########.fr       */
+/*   Created: 2025/04/07 15:43:25 by taewonki          #+#    #+#             */
+/*   Updated: 2025/07/09 12:36:53 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
 static size_t	word_num(char *str, char c)
 {

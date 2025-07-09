@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 13:26:09 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/09 12:41:56 by taewonki         ###   ########.fr       */
+/*   Created: 2025/04/02 12:24:43 by taewonki          #+#    #+#             */
+/*   Updated: 2025/04/09 16:00:58 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-int	main(int argc, char **argv)
+int	ft_isdigit(int a)
 {
-	static t_deque	a;
-	static t_deque	b;
-	t_deque			*stack[2];
-
-	stack[0] = &a;
-	stack[1] = &b;
-	init_stack_a(stack[0], argc, argv);
-	if (is_sorted(stack[0]))
-		free_exit(stack);
-	sort_stack(stack);
-	ft_free_list(stack[0]);
-	ft_free_list(stack[1]);
-	return (0);
+	if (a < 0 || a > 255)
+		return (0);
+	return (a >= '0' && a <= '9');
 }

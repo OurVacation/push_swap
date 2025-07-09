@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 13:44:45 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/08 15:41:35 by taewonki         ###   ########.fr       */
+/*   Created: 2025/04/03 11:56:25 by taewonki          #+#    #+#             */
+/*   Updated: 2025/04/17 11:23:18 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void	print_stack_state(t_deque *a, int i);
-int		ft_abs(int i);
-
-void	print_stack_state(t_deque *a, int i)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	t_node	*cur;
+	size_t	idx;
+	size_t	src_len;
 
-	if (!a)
-		return ;
-	cur = a->head;
-	if (i == 0)
-		ft_printf("stack a : ");
-	else
-		ft_printf("stack b : ");
-	while (cur)
+	src_len = ft_strlen(src);
+	idx = 0;
+	if (size == 0)
+		return (src_len);
+	while (idx < size - 1 && src[idx])
 	{
-		ft_printf("%d ", cur->data);
-		cur = cur->next;
+		dest[idx] = src[idx];
+		idx++;
 	}
-	ft_printf("\n");
-}
-
-int	ft_abs(int i)
-{
-	if (i < 0)
-		return (-i);
-	else
-		return (i);
+	dest[idx] = '\0';
+	return (src_len);
 }

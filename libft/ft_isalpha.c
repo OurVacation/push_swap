@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 13:26:09 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/09 12:41:56 by taewonki         ###   ########.fr       */
+/*   Created: 2025/04/02 12:02:23 by taewonki          #+#    #+#             */
+/*   Updated: 2025/04/12 16:30:50 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-int	main(int argc, char **argv)
+int	ft_isalpha(int a)
 {
-	static t_deque	a;
-	static t_deque	b;
-	t_deque			*stack[2];
-
-	stack[0] = &a;
-	stack[1] = &b;
-	init_stack_a(stack[0], argc, argv);
-	if (is_sorted(stack[0]))
-		free_exit(stack);
-	sort_stack(stack);
-	ft_free_list(stack[0]);
-	ft_free_list(stack[1]);
-	return (0);
+	if (a < 0 || a > 255)
+		return (0);
+	return ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z'));
 }

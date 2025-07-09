@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:18:47 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 14:19:08 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:03:01 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,23 @@ static void	stack_push(t_deque *a, char *str, char **to_free);
 void	init_stack_a(t_deque *a, int ac, char **av)
 {
 	int		i;
+	int		j;
 	char	**input;
 
 	if (ac < 2)
 		return ;
-	if (ac == 2)
-	{
-		i = -1;
-		input = ft_split(av[1], ' ');
-		if (!input)
-			return ;
-		while (input[++i])
-			stack_push(a, input[i], input);
-		ft_free_split(input);
-	}
 	else
 	{
 		i = 1;
 		while (i < ac)
 		{
-			stack_push(a, av[i], NULL);
+			input = ft_split(av[i], ' ');
+			if (!input || !*input)
+				error_free_helper(a, input);
+			j = -1;
+			while (input[++j])
+				stack_push(a, input[j], input);
+			ft_free_split(input);
 			i++;
 		}
 	}
@@ -70,7 +67,6 @@ int	is_sorted(t_deque *a)
 
 	if (!a || !a->head)
 	{
-		ft_printf("is_sorted() fail\n");
 		return (-1);
 	}
 	node = a->head;

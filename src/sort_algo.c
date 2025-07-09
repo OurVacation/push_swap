@@ -6,7 +6,7 @@
 /*   By: taewonki <taewonki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:44:08 by taewonki          #+#    #+#             */
-/*   Updated: 2025/07/07 13:59:21 by taewonki         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:28:23 by taewonki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,16 @@ void	three_sort(t_deque *ab[2])
 	else if (second < first && first < third)
 		sa(ab);
 	else if (second < third && third < first)
-	{
 		ra(ab);
-		sa(ab);
-	}
 	else if (third < first && first < second)
 		rra(ab);
 	else if (third < second && second < first)
-		ra(ab);
+	{
+		sa(ab);
+		rra(ab);
+	}
+	else
+		return ;
 }
 
 int	find_min(t_deque *a)
